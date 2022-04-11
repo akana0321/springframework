@@ -3,13 +3,13 @@
 	<li class="nav-item mb-2">
 		<h6 class="text-white">
 			<span class="mr-2">Ch01. </span>
-			<a href="${ pageContext.request.contextPath }/ch01/content" class="text-white">컨트롤러와 뷰 작성</a>
+			<a href="${ pageContext.request.contextPath }/ch01/content" class="text-white">Development Environment</a>
 		</h6>
 	</li>
 	<li class="nav-item mb-2">
 		<h6 class="text-white">
 			<span class="mr-2">Ch02. </span>
-			<a href="#" class="text-white">언젠가 할 Ch02...</a>
+			<a href="${ pageContext.request.contextPath }/ch02/content" class="text-white">Controller and View 작성</a>
 		</h6>
 	</li>			
 </ul>
