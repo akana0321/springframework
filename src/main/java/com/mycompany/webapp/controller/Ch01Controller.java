@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/ch01")	// 공통경로 설정
+//@Log4j2
 public class Ch01Controller {
 	private static final Logger logger = LoggerFactory.getLogger(Ch01Controller.class);
 	
@@ -14,18 +15,7 @@ public class Ch01Controller {
 	@RequestMapping("/content")
 	public String content() {
 		logger.info("실행");
-		return "ch01/content";
-	}
-	
-	@RequestMapping("/content2")
-	public String content2() {
-		logger.info("실행");
-		return "ch01/content";
-	}
-	
-	@RequestMapping("/content3")
-	public String content3() {
-		logger.info("실행");
+//		log.info("실행");
 		return "ch01/content";
 	}
 }
