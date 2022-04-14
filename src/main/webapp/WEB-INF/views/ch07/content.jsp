@@ -70,7 +70,37 @@
 	</div>
 	
 	<div class="card-body">
-		<a href="ModelAndViewReturn" class="btn btn-info btn-sm mr-2">ModelAndView 리턴</a>
+		<a href="modelAndViewReturn" class="btn btn-info btn-sm mr-2">ModelAndView 리턴</a>
+	</div>
+	
+	<hr/>
+	
+	<div class="card-header">
+		Model 매개변수로 객체 전달
+	</div>
+	
+	<div class="card-body">
+		<a href="modelArgument" class="btn btn-info btn-sm mr-2">Model 매개변수로 객체 전달</a>
+	</div>
+	
+	<hr/>
+	
+	<div class="card-header">
+		@ModelAttribute로 객체 전달
+	</div>
+	
+	<div class="card-body">
+		<a href="modelAttribute?kind=suit&sex=woman" class="btn btn-info btn-sm mr-2">@ModelAttribute로 객체 전달</a>
+	</div>
+		
+	<hr/>
+	
+	<div class="card-header">
+		Command(DTO 객체)로 객체 전달
+	</div>
+	
+	<div class="card-body">
+		<a href="commandObject?kind=suit&sex=woman" class="btn btn-info btn-sm mr-2">Command(DTO 객체)로 객체 전달</a>
 	</div>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
