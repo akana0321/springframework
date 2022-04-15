@@ -141,18 +141,25 @@
 		    <!--  <scope>provided</scope> 언제까지 사용할 것인가 - provided: 최종 산출물에서 빼겠다 -->
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+		<!-- Validation -->
 		<dependency>
 		    <groupId>javax.validation</groupId>
 		    <artifactId>validation-api</artifactId>
 		    <version>2.0.1.Final</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<!-- JSON -->
 		<dependency>
 		    <groupId>org.json</groupId>
 		    <artifactId>json</artifactId>
 		    <version>20220320</version>
+		</dependency>
+
+		<!-- File Upload -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.4</version>
 		</dependency>
 
 
