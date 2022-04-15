@@ -104,7 +104,7 @@
 							mpasswordError.html("");
 							
 							if(data.result==="success") {
-								//현재 페이지 전체를 다시 서버에서 받아오도록 함
+								//현재 페이지 전체를 다시 서버에서 받아오도록 함(새로고침)
 								window.location.reload();
 							} else if(data.result==="wrongMid") {
 								midError.html("아이디가 잘못됨");

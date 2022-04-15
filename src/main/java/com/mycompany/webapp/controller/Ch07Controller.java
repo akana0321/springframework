@@ -132,7 +132,8 @@ public class Ch07Controller {
 	}
 	
 	@GetMapping("/modelAttribute")
-	public String modelAttribute(@ModelAttribute String kind, @ModelAttribute String sex) {
+	public String modelAttribute(@ModelAttribute String kind,
+								@ModelAttribute String sex) {
 		return "ch07/clothInfo";
 	}
 	
@@ -148,4 +149,12 @@ public class Ch07Controller {
 		return "ch07/clothInfo";
 	}
 	*/
+	
+	// 요청 매핑 메소드(위에 작성한 메소드들 같은 거)가 실행될 때마다 먼저 실행
+	@ModelAttribute("commonData")
+	public Ch07Board getcommonData() {
+		log.info("실행");
+		Ch07Board board = new  Ch07Board(2, "제목2", "내용2", "글쓴이2", new Date());
+		return board;
+	}
 }
