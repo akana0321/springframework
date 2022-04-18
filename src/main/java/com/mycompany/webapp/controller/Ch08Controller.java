@@ -150,8 +150,8 @@ public class Ch08Controller {
 							SessionStatus sessionStatus) {
 		log.info("data1: " + inputForm.getData1());
 		log.info("data2: " + inputForm.getData2());
-		log.info("data4: " + inputForm.getData3());
-		log.info("data5: " + inputForm.getData4());
+		log.info("data3: " + inputForm.getData3());
+		log.info("data4: " + inputForm.getData4());
 		sessionStatus.setComplete();	// 만든 SessionAttributes 제거
 		return "redirect:/ch08/content";
 	}
