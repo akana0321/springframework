@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <ul class="nav flex-column">
+	<h4 class="text-white">Controller</h4>
 	<li class="nav-item mb-2">
 		<h6 class="text-white">
 			<span class="mr-2">Ch01. </span>
@@ -58,6 +59,14 @@
 		<h6 class="text-white">
 			<span class="mr-2">Ch10. </span>
 			<a href="${ pageContext.request.contextPath }/ch10/content" class="text-white">Controller/Exception Handling</a>
+		</h6>
+	</li>
+	<br>
+	<h4 class="text-white">View</h4>
+	<li class="nav-item mb-2">
+		<h6 class="text-white">
+			<span class="mr-2">Ch11. </span>
+			<a href="${ pageContext.request.contextPath }/ch11/content" class="text-white">View/Spring Tag Library</a>
 		</h6>
 	</li>
 </ul>
