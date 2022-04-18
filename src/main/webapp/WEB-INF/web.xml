@@ -28,6 +28,13 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:spring/dispatcher/*.xml</param-value>
 		</init-param>
+		<!-- 404일 경우 500에러로 발생 -->
+		<init-param>
+			<!-- Controller를 못찾은 경우 -> URL에 따른 요청매핑 메소드를 못찾았을 경우 예외 발생 -->
+			<param-name>throwExceptionIfNoHandlerFound</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		
 		<!-- 배치할 때 DispatcherServlet 객체를 미리 생성하도록 설정 -->
 		<load-on-startup>1</load-on-startup>
 		
@@ -65,4 +72,10 @@
 		<filter-name>encodingFilter</filter-name> <!-- 위에 정의한 필터 -->
 		<url-pattern>/*</url-pattern>	<!-- 언제 실행할지 -->
 	</filter-mapping>
+	
+	<!-- 404에러 처리
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/ch10/404.jsp</location>
+	</error-page> -->
 </web-app>
