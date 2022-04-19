@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 1. 기본 생성자를 이용하여 객체 생성 -->
+	<bean id="ch13Service2_1" class="com.mycompany.webapp.service.Ch13Service2CreateByXml" />
+	<bean id="ch13Dao2" class="com.mycompany.webapp.dao.Ch13Dao2CreateByXml" />
+	
+	<!-- 2. 정적 메소드를 이요해서 객체 생성 -->
+	<bean id="ch13Service2_2" class="com.mycompany.webapp.service.Ch13Service2CreateByXml"
+		factory-method="getInstance1" />
+		
+	<!-- 3. 관리 객체의 인스턴스 메소드를 이용해서 객체 생성 -->
+	<bean id="ch13Service2_3" class="com.mycompany.webapp.service.Ch13Service2CreateByXml"
+		factory-bean="ch13Service2_1" factory-method="getInstance2" />
+</beans>
