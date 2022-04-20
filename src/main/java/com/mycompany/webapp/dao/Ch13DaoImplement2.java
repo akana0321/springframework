@@ -4,10 +4,10 @@ import org.springframework.stereotype.Repository;
 
 import lombok.extern.log4j.Log4j2;
 
-@Repository("ch13Dao1")
+@Repository
 @Log4j2
-public class Ch13Dao1CreateByAnnotation {
-	public Ch13Dao1CreateByAnnotation() {
+public class Ch13DaoImplement2 implements Ch13DaoInterface{
+	public Ch13DaoImplement2() {
 		log.info("실행");
 	}
 }
