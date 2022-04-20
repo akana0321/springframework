@@ -14,6 +14,7 @@
 		<config>src/main/resources/spring/root/ch04_message_source.xml</config>
 		<config>src/main/resources/spring/dispatcher/ch12_viewresolver.xml</config>
 		<config>src/main/resources/spring/root/ch13_create_di.xml</config>
+		<config>src/main/resources/spring/root/ch14_datasource.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/resources/spring/dispatcher/ch09_multipart_resolver.xml</config>
