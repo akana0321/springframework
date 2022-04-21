@@ -13,7 +13,7 @@
 		<property name="mapperLocations" value="classpath:mybatis/mapper/*.xml" />
 	</bean>
 
-	<!-- 프로그램 방식으로 사용하기 위ㅏㄴ 설정 -->
+	<!-- 프로그램 방식으로 사용하기 위해 설정 -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
