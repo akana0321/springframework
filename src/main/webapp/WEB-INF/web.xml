@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-  version="4.0">
-  <display-name>springframework</display-name>
-  <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
-  <!-- ContextLoaderListener가 Root WebApplicationContext를 생성할 때 사용할 Spring 설정 파일의 위치 지정 -->
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	version="4.0">
+	<display-name>springframework</display-name>
+	<!-- The definition of the Root Spring Container shared by all Servlets 
+		and Filters -->
+	<!-- ContextLoaderListener가 Root WebApplicationContext를 생성할 때 사용할 Spring 
+		설정 파일의 위치 지정 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<!-- <param-value>/WEB-INF/spring/root/*.xml</param-value> -->
 		<param-value>classpath:spring/root/*xml</param-value>
 	</context-param>
-	
-	<!-- Creates the Spring Container shared by all Servlets and Filters, 공유객체 생성 -->
-	<!-- WebApplication이 배치(deployment)될 때와 해제(undeployment)될 때 Root WebApplicationsContext를 생성하고 제거하기 위해 ContextLoaderListener 설정 -->
+
+	<!-- Creates the Spring Container shared by all Servlets and Filters, 공유객체 
+		생성 -->
+	<!-- WebApplication이 배치(deployment)될 때와 해제(undeployment)될 때 Root WebApplicationsContext를 
+		생성하고 제거하기 위해 ContextLoaderListener 설정 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- Processes application requests, 해당 부분에서만 사용하는 객체 생성, 클라이언트의 요청을 처리하는 DispatcherServlet 설정 -->
+	<!-- Processes application requests, 해당 부분에서만 사용하는 객체 생성, 클라이언트의 요청을 처리하는 
+		DispatcherServlet 설정 -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<!-- WAS가 init-param에서 설정한 xml파일을 바탕으로 servlet-class에 작성한 것이 동작 -->
-		<!-- DispatcherServlet이 WebApplicationContext를 생성할 때 Spring 설정 파일(XML)의 파일의 위치 지정 -->
+		<!-- DispatcherServlet이 WebApplicationContext를 생성할 때 Spring 설정 파일(XML)의 
+			파일의 위치 지정 -->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:spring/dispatcher/*.xml</param-value>
@@ -34,10 +40,10 @@
 			<param-name>throwExceptionIfNoHandlerFound</param-name>
 			<param-value>true</param-value>
 		</init-param>
-		
+
 		<!-- 배치할 때 DispatcherServlet 객체를 미리 생성하도록 설정 -->
 		<load-on-startup>1</load-on-startup>
-		
+
 		<!-- Servlet 3.0 이상에서 지원하는 mulitpart/form-data 파싱 기능을 위한 정의 -->
 		<multipart-config>
 			<!-- 임시파일이 저장될 폴더의 절대 경로만 가능 -->
@@ -50,13 +56,14 @@
 			<file-size-threshold>1024</file-size-threshold>
 		</multipart-config>
 	</servlet>
-		
-	<!-- 클라이언트가 http://localhost:8080/webapp/... 이렇게 요청 했을 때 DispatcherServlet로 모두 처리 -->
+
+	<!-- 클라이언트가 http://localhost:8080/webapp/... 이렇게 요청 했을 때 DispatcherServlet로 
+		모두 처리 -->
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- 클라이언트가 POST 방식으로 한글을 보냈을 때 한글을 복원시키는 Filter를 추가 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>	<!-- 아무 이름이나 작성 가능 -->
@@ -66,16 +73,25 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
-	
-	<!-- 클라이언트가 http://localhost:8080/webapp/* 이렇게 요청 했을 때 DispatcherServlet로 모두 처리 -->
+
+	<!-- 클라이언트가 http://localhost:8080/webapp/* 이렇게 요청 했을 때 DispatcherServlet로 
+		모두 처리 -->
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name> <!-- 위에 정의한 필터 -->
 		<url-pattern>/*</url-pattern>	<!-- 언제 실행할지 -->
 	</filter-mapping>
-	
-	<!-- 404에러 처리
-	<error-page>
-		<error-code>404</error-code>
-		<location>/WEB-INF/views/ch10/404.jsp</location>
-	</error-page> -->
+
+	<!-- 404에러 처리 <error-page> <error-code>404</error-code> <location>/WEB-INF/views/ch10/404.jsp</location> 
+		</error-page> -->
+
+	<!-- Spring Security Filter 설정 -->
+	<filter>
+		<!-- 예약된 필터 이름이기 때문에 반드시 이 이름으로 설정해야 함 -->
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>

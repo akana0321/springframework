@@ -99,5 +99,10 @@
 			<span class="mr-2">Ch16. </span>
 			<a href="${ pageContext.request.contextPath }/ch16/content" class="text-white">Transaction</a>
 		</h6>
+	</li><li class="nav-item mb-2">
+		<h6 class="text-white">
+			<span class="mr-2">Ch17. </span>
+			<a href="${ pageContext.request.contextPath }/ch17/content" class="text-white">Security</a>
+		</h6>
 	</li>
 </ul>
