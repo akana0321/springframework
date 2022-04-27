@@ -26,7 +26,9 @@
 				    <img src="${ pageContext.request.contextPath }/resources/images/logo-spring.png" width="30" height="30" class="d-inline-block align-top"> Spring
 				    <%-- <img src="<%=request.getContextPath() %>/resources/images/logo-spring.png" width="30" height="30" class="d-inline-block align-top"> Spring --%>
 				</a>
+				
 				<div class="d-flex">
+					<%-- 세션으로 로그인 판단
 					<c:if test="${ sessionMid == null }">
 						<a href="${ pageContext.request.contextPath }/ch08/login" class="btn btn-success btn-sm">로그인</a>
 					</c:if>
@@ -34,6 +36,22 @@
 						<p class="text-white mr-5">User Id: ${ sessionMid }</p>
 						<a href="${ pageContext.request.contextPath }/ch08/logout" class="btn btn-success btn-sm">로그아웃</a>
 					</c:if>
+					--%>
+					<sec:authorize access="isAnonymous()">
+						<a href="${ pageContext.request.contextPath }/ch17/loginForm" class="btn btn-success btn-sm">로그인</a>
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+						<%-- 사용자 정보 얻기 --%>
+						<p class="text-white mr-5">User Id: <sec:authentication property="principal.username"/></p>
+						<%-- CSRF가 비활성화 되어 있는 경우 
+						<a href="${ pageContext.request.contextPath }/logout" class="btn btn-success btn-sm">로그아웃</a>
+						--%>
+						<%-- CSRF가 활성화 되어 있는 경우 --%>
+						<form method="post" action="${pageContext.request.contextPath}/logout" class="d-inline-block">
+	                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	                        <button class="btn btn-success btn-sm">Ch17 로그아웃</button>
+                     	</form>
+					</sec:authorize>
 				</div>
 			</nav>
 			<div class="container-fluid flex-grow-1">

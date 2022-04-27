@@ -2,6 +2,7 @@ package com.mycompany.webapp.service;
 
 import javax.annotation.Resource;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,9 @@ public class Ch14MemberService {
 	public JoinResult join(Ch14Member member) {
 		Ch14Member dbMember = memberDao.selectByMid(member.getMid());
 		if(dbMember == null) {
+			// 기본 암호화 방법(bcrypt, 가장 강한 방법)
 			PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+			// PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			member.setMpassword(passwordEncoder.encode(member.getMpassword()));
 			int result = memberDao.insert(member);
 			return JoinResult.SUCCESS;
@@ -46,5 +49,9 @@ public class Ch14MemberService {
 				return LoginResult.FAIL_MPASSWORD;
 			}
 		}
+	}
+	
+	public Ch14Member getMember(String mid) {
+		return memberDao.selectByMid(mid);
 	}
 }
